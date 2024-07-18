@@ -28,7 +28,6 @@ public:
                 }
             }
         }
-
         vector<int> ans;
         for(int x: left){
             if(x>0 && x<distance){
