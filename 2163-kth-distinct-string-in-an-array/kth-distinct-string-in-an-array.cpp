@@ -6,7 +6,7 @@ public:
             m[i]++;
         }
         int curr=0;
-        string ans;
+        string ans="";
         for(int i=0;i<arr.size();i++){
             if(m[arr[i]]==1){
                 curr++;
