@@ -1,27 +1,35 @@
 class Solution {
 public:
     vector<vector<int>> spiralMatrixIII(int rows, int cols, int rStart, int cStart) {
-        vector<vector<int>> directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}}; // East, South, West, North
-        vector<vector<int>> result = {{rStart, cStart}};
-        int steps = 0, d = 0;
-        
-        while (result.size() < rows * cols) {
-            if (d == 0 || d == 2) steps++;
-            
-            for (int i = 0; i < steps; i++) {
-                rStart += directions[d][0];
-                cStart += directions[d][1];
-                
-                if (rStart >= 0 && rStart < rows && cStart >= 0 && cStart < cols) {
-                    result.push_back({rStart, cStart});
-                }
-                
-                if (result.size() == rows * cols) return result;
+        int i = rStart, j = cStart;
+        int diri = 0, dirj = 1; // directions to move
+        int twice = 2;
+        vector<vector<int>> res;
+        int moves = 1;
+        int next_moves = 2;
+
+        while (res.size() < rows * cols) {
+            if (i >= 0 && i < rows && j >= 0 && j < cols) {
+                res.push_back({i, j});
             }
-            
-            d = (d + 1) % 4;
+
+            i += diri;
+            j += dirj;
+            moves -= 1;
+            if (moves == 0) {
+                int temp = diri;
+                diri = dirj;
+                dirj = -temp; // right direction
+                twice -= 1;
+                if (twice == 0) {
+                    twice = 2;
+                    moves = next_moves;
+                    next_moves += 1;
+                } else {
+                    moves = next_moves - 1;
+                }
+            }
         }
-        
-        return result;
+        return res;
     }
 };
