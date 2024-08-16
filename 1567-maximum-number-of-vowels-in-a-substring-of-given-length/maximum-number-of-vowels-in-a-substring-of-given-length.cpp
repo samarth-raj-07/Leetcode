@@ -9,9 +9,9 @@ public:
                 ans++;
             }
         }
-        if(ans>maxm){
-                maxm=ans;
-            }
+        
+        maxm=ans;
+        
         int curr=0;
         for(int i=k;i<s.size();i++){
             if(s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o' || s[i]=='u'  ){
