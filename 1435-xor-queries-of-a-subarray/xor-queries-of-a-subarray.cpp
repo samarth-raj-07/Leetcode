@@ -8,13 +8,12 @@ public:
              prefXOR.push_back(temp);
         }
         for(auto & i: q){
-            int ans;
-            if(i[0]!=0){
-                ans=prefXOR[i[0]-1]^prefXOR[i[1]];
-            }else{
+            int ans=0;
+            if(i[0]==0){
                 ans=prefXOR[i[1]];
+            }else{
+                ans=prefXOR[i[0]-1]^prefXOR[i[1]];
             }
-            
             vec.push_back(ans);
         }
 
