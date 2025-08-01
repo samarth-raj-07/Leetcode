@@ -20,24 +20,24 @@ public:
             return total;
         }
 
-        ll currentStart = 0;
+        ll curr = 0;
         ll nxt = 0;
 
         for (int i = 0; i < n - 1; ++i) {
             ll sumCurr = 0;
             ll sumNext = 0;
-            nxt = currentStart + 1LL * s[0] * mna[i];
+            nxt = curr + 1LL * s[0] * mna[i];
 
             for (int j = 1; j < m; ++j) {
                 sumCurr += 1LL * s[j - 1] * mna[i];
                 sumNext += 1LL * s[j - 1] * mna[i + 1];
 
-                ll end= currentStart + sumCurr + 1LL * s[j] * mna[i];
-                ll conflictFix = end- sumNext;
-                nxt = max(nxt, conflictFix);
+                ll end= curr + sumCurr + 1LL * s[j] * mna[i];
+                ll cnfmix = end- sumNext;
+                nxt = max(nxt, cnfmix);
             }
 
-            currentStart = nxt;
+            curr = nxt;
         }
 
         for (int j = 0; j < m; ++j) {
